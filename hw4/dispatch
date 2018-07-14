@@ -1,0 +1,13 @@
+tardir=hw4-ref-$1
+tarball=$tardir.tgz
+if [ ! -f $tarball ];
+then
+   echo "$tarball not found!..."
+   echo "Use \"dispatch <versionNumber>\" (e.g. dispatch 5.4.0)"
+   exit 0
+fi
+tar zxvf $tarball > /dev/null
+cd $tardir; cp -f memTest* ../ref; cd ..
+cd $tardir; cp -f libcmd* ../lib; cd ..
+rm -rf $tardir 
+echo "dispatch $1 successfully..."
